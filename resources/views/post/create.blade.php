@@ -4,8 +4,14 @@
             フォーム
         </h2>
     </x-slot>
-    <div class="max-w-7 mx-auto px-6">
-        <form>
+    <div class="max-wx7 mx-auto px-6">
+        @if (session('message'))
+            <div class="text-red-600 font-bold">
+                {{ session('message') }}
+            </div>
+        @endif
+        <form method="post" action="{{ route('post.store') }}">
+            @csrf
             <div class="mt-8">
                 <div class="w-full flex flex-col">
                     <label for="title" class="font-semibold mt-4">件名</label>
@@ -17,7 +23,7 @@
             <div class="w-full flex flex-col">
                 <label for="body" class="font-semibold mt-4">本文</label>
                 <textarea class="w-auto py-2 border border-gray-300 rounded-md" name="body" id="body" cols="30"
-                    rows="10">本文</textarea>
+                    rows="10"></textarea>
             </div>
             <x-primary-button class="mt-4">
                 送信する

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,9 @@ Route::get('/test', [TestController::class, 'test'])->name('test');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/post/create', [PostController::class, 'create']);
+
+Route::post('post', [PostController::class, 'store'])->name('post.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,4 +34,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
