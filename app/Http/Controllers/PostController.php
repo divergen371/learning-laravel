@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts=Post::where('user_id', \auth()->id())->get();
+        $posts = Post::where('user_id', \auth()->id())->get();
         return \view('post.index', \compact('posts'));
     }
 
@@ -30,5 +30,10 @@ class PostController extends Controller
         $validated['user_id'] = \auth()->id();
         $post = Post::create($validated);
         return \back()->with('message', '保存しました');
+    }
+
+    public function show(Post $post)
+    {
+        return \view('post.show', \compact('post'));
     }
 }
