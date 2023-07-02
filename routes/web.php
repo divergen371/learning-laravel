@@ -20,7 +20,7 @@ Route::get('/test', [TestController::class, 'test'])->name('test');
 Route::get('/', function () {
     return view('welcome');
 })->middleware('auth');
-Route::get('/post/create', [PostController::class, 'create']);
+Route::get('/post/create', [PostController::class, 'create'])->middleware(['auth', 'admin']);
 
 Route::post('post', [PostController::class, 'store'])->name('post.store');
 Route::get('post', [PostController::class, 'index']);
