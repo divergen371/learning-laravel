@@ -35,7 +35,7 @@ class PostController extends Controller
         ]);
         $validated['user_id'] = \auth()->id();
         $post = Post::create($validated);
-        return \redirect()->route('post.index');
+        return \redirect()->route('post.index')->with('message', '保存しました');
     }
 
 
@@ -67,7 +67,7 @@ class PostController extends Controller
 
         $validated['user_id'] = \auth()->id();
         $post->update($validated);
-        return \redirect('post')->with('message','更新しました');
+        return \back()->with('message','更新しました');
     }
 
     /**
