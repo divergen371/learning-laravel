@@ -52,9 +52,9 @@ class PostController extends Controller
         return \back()->with('message', '更新しました');
     }
 
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
         $post->delete();
-        return \redirect()->route('post.index');
+        return \redirect('post')->with('message', '削除しました');
     }
 }
