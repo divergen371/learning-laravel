@@ -26,7 +26,7 @@ Route::post('post', [PostController::class, 'store'])->name('post.store');
 Route::get('post', [PostController::class, 'index']);
 Route::get('/post/show/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('/post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
-Route::get('/post/{post}'. [PostController::class, 'update'])->name('post.update');
+Route::patch('/post/{post}', [PostController::class, 'update'])->name('post.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
