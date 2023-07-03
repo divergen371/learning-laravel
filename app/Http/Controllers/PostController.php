@@ -37,7 +37,8 @@ class PostController extends Controller
         return \view('post.show', \compact('post'));
     }
 
-    public function edit(Post $post) {
+    public function edit(Post $post)
+    {
         return \view('post.edit', \compact('post'));
     }
     public function update(Request $request, Post $post)
@@ -49,5 +50,11 @@ class PostController extends Controller
         $validated['user_id'] = \auth()->id();
         $post->update($validated);
         return \back()->with('message', '更新しました');
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return \redirect()->route('post.index');
     }
 }

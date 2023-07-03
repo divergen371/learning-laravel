@@ -23,10 +23,11 @@ Route::get('/', function () {
 Route::get('/post/create', [PostController::class, 'create']);
 
 Route::post('post', [PostController::class, 'store'])->name('post.store');
-Route::get('post', [PostController::class, 'index']);
+Route::get('post', [PostController::class, 'index'])->name('post.index');
 Route::get('/post/show/{post}', [PostController::class, 'show'])->name('post.show');
 Route::get('/post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
 Route::patch('/post/{post}', [PostController::class, 'update'])->name('post.update');
+Route::delete('/post/{post}', [PostController::class, 'delete'])->name('post.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
